@@ -1,0 +1,15 @@
+diff --git a/package.json b/package.json
+index d7c871c97dbff147fce7fb8d3e4889a5474a5beb..250d29d0d2a3b54c3f18439f1d25de048368b927 100644
+--- a/package.json
++++ b/package.json
+@@ -2,8 +2,8 @@
+   "name": "promjs",
+   "version": "0.4.2",
+   "description": "",
+-  "main": "lib/index.js",
+-  "typings": "lib/index.d.ts",
++  "main": "index.js",
++  "typings": "index.d.ts",
+   "scripts": {
+     "build": "rm -rf lib && yarn run build:js && yarn run build:types && webpack-cli -p && cp package.json README.md ./lib",
+     "build:js": "babel src --out-dir lib --extensions \".ts,.tsx\" --source-maps inline",

@@ -1,7 +1,7 @@
-import prom from "promjs";
 import { Toucan } from "toucan-js";
 import { z } from "zod";
 import Youch from "./Youch";
+import prom from "promjs";
 
 export interface Env {
 	PROMETHEUS_TOKEN: string;
