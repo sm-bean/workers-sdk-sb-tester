@@ -1,13 +1,17 @@
-import { SELF } from "cloudflare:test";
-import { describe, expect, it } from "vitest";
+import { test, expect, type Page } from '@playwright/test';
 
-describe("test test", () => {
-    it("should", async () => {
-        const err = new Error("error error error");
-        const resp = await SELF.fetch(`https://format-errors.example.com`, {
-            method: "POST",
-            body: JSON.stringify(err),
-        })
-        expect(resp).toMatchInlineSnapshot(`Response {}`)
-    })
+test.beforeEach(async ({ page }) => {
+  await page.goto('http://localhost:8765');
+});
+
+test("should show H1", async ({page}) => {
+    await expect(page.getByTestId('title')).toBeVisible();
+})
+
+test("should create an iframe", async({page}) => {
+    await expect(page.getByTestId("worker")).toBeVisible();
+})
+
+test("should display header within the iframe", async({page}) => {
+    const iframe = page.getByTestId("worker")
 })

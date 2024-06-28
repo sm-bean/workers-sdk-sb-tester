@@ -117,7 +117,7 @@ export async function handlePrettyErrorRequest({
 		].join("");
 	});
 	return new Response(await youch.toHTML(), {
-		headers: { "Content-Type": "text/html;charset=utf-8" },
+		headers: { "Content-Type": "text/html;charset=utf-8" }, status: 300
 	});
 }
 
@@ -162,8 +162,8 @@ export default {
 		let payload: Payload;
 		try {
 			payload = PayloadSchema.parse(await request.json());
-		} catch {
-			return new Response("Invalid payload", { status: 400 });
+		} catch (err) {
+			return new Response(JSON.stringify(err), { status: 400 });
 		}
 
 		try {
